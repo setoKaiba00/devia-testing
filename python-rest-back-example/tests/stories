@@ -1,0 +1,116 @@
+Service de gestion des produits
+1. Récupérer tous les produits (GET /products)
+
+En tant que client,
+Je veux voir une liste de tous les produits,
+Afin de pouvoir rapidement consulter tous les produits disponibles dans le système.
+
+Critères d'acceptation :
+
+Le système récupère une liste de tous les produits depuis la base de données.
+La réponse inclut les détails de chaque produit (par exemple, ID, nom, prix).
+Si aucun produit n'existe, le système retourne une liste vide.
+2. Récupérer un produit par ID (GET /products/:id)
+
+En tant que client,
+Je veux consulter les détails d'un produit spécifique,
+Afin de voir toutes les informations pertinentes concernant ce produit.
+
+Critères d'acceptation :
+
+Le système récupère les détails d'un produit en utilisant son ID.
+La réponse inclut les détails complets du produit (par exemple, nom, prix, description).
+Si le produit avec l'ID donné n'existe pas, le système retourne une erreur 404 avec un message d'erreur.
+3. Créer un produit (POST /products)
+
+En tant que administrateur,
+Je veux ajouter un nouveau produit dans le système,
+Afin de le rendre disponible pour que les clients puissent le consulter et l'acheter.
+
+Critères d'acceptation :
+
+Une requête valide inclut les informations nécessaires telles que le nom du produit, le prix et la description.
+Le système enregistre le nouveau produit dans la base de données.
+Si les données sont invalides (par exemple, des champs manquants), le système retourne une erreur 400 avec un message de validation.
+Après création, la réponse inclut les détails du produit nouvellement créé.
+4. Mettre à jour un produit (PUT /products/:id)
+
+En tant que administrateur,
+Je veux mettre à jour les détails d'un produit existant,
+Afin de garantir que les informations du produit sont exactes.
+
+Critères d'acceptation :
+
+Le système met à jour le produit avec l'ID fourni en fonction du corps de la requête.
+Seuls les champs spécifiés sont mis à jour (par exemple, prix, description).
+Si l'ID du produit n'existe pas, le système retourne une erreur 404.
+Après mise à jour, les changements sont reflétés dans la base de données.
+5. Supprimer un produit (DELETE /products/:id)
+
+En tant que administrateur,
+Je veux supprimer un produit du système,
+Afin de le rendre indisponible à l'achat ou à la consultation.
+
+Critères d'acceptation :
+
+Le système supprime le produit associé à l'ID donné.
+Si l'ID du produit n'existe pas, le système retourne une erreur 404.
+Le produit est définitivement supprimé de la base de données.
+Service de gestion des commandes
+1. Récupérer toutes les commandes (GET /orders)
+
+En tant que client,
+Je veux voir une liste de toutes mes commandes,
+Afin de pouvoir suivre mes achats passés.
+
+Critères d'acceptation :
+
+Le système récupère une liste de commandes pour l'utilisateur.
+La réponse inclut les détails de base de chaque commande (par exemple, ID de commande, date, prix total).
+Si aucune commande n'est trouvée, le système retourne une liste vide.
+2. Récupérer une commande par ID (GET /orders/:id)
+
+En tant que client,
+Je veux consulter les détails d'une commande spécifique,
+Afin de voir les articles que j'ai achetés et leur statut.
+
+Critères d'acceptation :
+
+Le système récupère les détails de la commande avec l'ID donné.
+La réponse inclut les détails complets de la commande (par exemple, articles, quantités, prix total).
+Si la commande n'existe pas, le système retourne une erreur 404.
+3. Créer une commande (POST /orders)
+
+En tant que client,
+Je veux passer une nouvelle commande,
+Afin de pouvoir acheter des produits dans le système.
+
+Critères d'acceptation :
+
+Une requête valide inclut les informations nécessaires telles que les ID des produits, les quantités et les informations de livraison.
+Le système crée la commande et l'enregistre dans la base de données.
+Si les données sont invalides (par exemple, des champs manquants), le système retourne une erreur 400 avec un message de validation.
+Après création, la réponse inclut les détails de la commande nouvellement créée.
+4. Mettre à jour une commande (PUT /orders/:id)
+
+En tant que client,
+Je veux mettre à jour les détails d'une commande existante,
+Afin de modifier les quantités ou l'adresse de livraison avant qu'elle ne soit traitée.
+
+Critères d'acceptation :
+
+Le système met à jour la commande avec l'ID donné en fonction du corps de la requête.
+Seuls les champs spécifiés sont mis à jour (par exemple, quantités des produits, adresse de livraison).
+Si l'ID de la commande n'existe pas, le système retourne une erreur 404.
+Après mise à jour, les changements sont reflétés dans la base de données.
+5. Annuler une commande (DELETE /orders/:id)
+
+En tant que client,
+Je veux annuler ma commande,
+Afin de éviter qu'elle ne soit traitée si nécessaire.
+
+Critères d'acceptation :
+
+Le système supprime la commande associée à l'ID donné.
+Si l'ID de la commande n'existe pas, le système retourne une erreur 404.
+Après annulation, la commande n'est plus disponible pour traitement.
